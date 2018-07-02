@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Argo Sözlük</title>
+	<link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+</head>
+<body>
+	<div style="margin-top: 100px">
+		<h1>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</h1>
+	</div>
+	<div id="page-header">
+		<a href="#about" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgb(250, 200, 50)'">about</a>
+		<a href="#contact" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgb(250, 200, 50)'">contact</a>
+		<a href="#me" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgb(250, 200, 50)'">me</a>
+		<div class="bar_main" onclick="change_x(this)">
+			  <div class="bar1"></div>
+			  <div class="bar2"></div>
+			  <div class="bar3"></div>
+		</div>
+	</div>
+<div class="content">
+<h1>Welcome to Slang Dictionary</h1>
+<h2>{{ insert_me }}</h2>
+<br><a href="{% url 'index' %}">Click to be see what is the purpose of life</a><br>
+<img src="{% static 'images/ibo.jpg' %}" height="150px"><br>
+<p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p><br>
+<h1>{{ insert_me }}</h1>
+<p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p><br>
+<p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p><br>
+
+{% for word in word_list %}
+<div>
+	<h1>{{ word.word }}</h1>
+	<p>{{ word.meaning }}</p>
+	<p>{{ word.date }}</p>
+</div>
+{% endfor %}
+</div>
+
+<script type="text/javascript">
+window.onscroll = function() {ofset()};
+
+var navBar = document.getElementById("page-header").offsetTop;
+
+function ofset() {
+    if (window.pageYOffset >= navBar) {
+		document.getElementById("page-header").classList.add("sticky");
+		//document.getElementsByTagName("body")[0].style.marginTop = document.getElementById("page-header").offsetHeight + "px";
+	} else {
+		document.getElementById("page-header").classList.remove("sticky");
+		//document.getElementsByTagName("body")[0].style.marginTop = "0px";
+	}		
+};
+</script>

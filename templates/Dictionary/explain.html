@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Explained Page</title>
+	<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+<h2>Explained!</h2><br><br>
+<a href="{% url 'index' %}">Click to return back</a><br><br>
+<img src="{% static 'images/murr.jpg' %}" height="150px"><br><br>
+<h1>{{my_dict}}</h1>
+<h1>COUNTING...</h1>
+<h2>{{ count }}</h2>
+</body>
+</html>
