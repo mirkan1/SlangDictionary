@@ -6,7 +6,7 @@ django.setup()
 
 ## FAKE POPULATE SCRIPT
 import random
-from Dictionary.models import Word
+from Dictionary.models import Word, Yore
 from faker import Faker
 
 def add_topic():
@@ -25,7 +25,7 @@ def populate(N=5):
 		fake_date = Faker().date()
 
 		#CREATE THE NEW WEBPAGE ENTRY
-		wo = Word.objects.get_or_create(word=fake_word, meaning="".join("".join(str([j for i in range(5) for j in Faker().words()]).split("'")).split("]")[0].split("[")[1]), date=fake_date)
+		wo = Word.objects.get_or_create(yore=Yore.objects.all()[random.randint(0, len(Yore.objects.all())-1)], word=fake_word, meaning="".join("".join(str([j for i in range(5) for j in Faker().words()]).split("'")).split("]")[0].split("[")[1]), date=fake_date)
 		print(wo)
 		#CREATE A FAKE ACCESS RECORD FOR THAT WEBPAGE
 		#acc_rec = AccessRecord.objects.get_or_create(name=webpg, date=fake_date)[0]

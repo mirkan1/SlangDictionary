@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Word
 
@@ -23,5 +23,12 @@ def explain(request):
 	# print(count)
 	if count == 0:
 		count = 5
-		return HttpResponse("You explained fast and counted bro XD<br><br><a href=\"/first_app\">Click to return back</a><br><h1>(You see this because Count is %d )</h1>" % (count - count))
-	return render(request, 'first_app/explain.html', context=(my_dict))
+		return HttpResponse("You explained fast and counted bro XD<br><br><a href=\"other\">Click to return back</a><br><h1>(You see this because Count is %d )</h1>" % (count - count))
+	return render(request, 'Dictionary/explain.html', context=(my_dict))
+
+def other(request):
+	return render(request, 'Dictionary/other.html')
+
+def word_detail(request, pk):
+	word = get_object_or_404(Word, pk=pk)
+	return render(request, 'Dictionary/word_detail.html', {'word':word})
